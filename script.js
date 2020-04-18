@@ -28,13 +28,20 @@ const render = function() {
             todoList.append(li);
         }
 
-            todoList.append(li);
+           
         const btnTodoCompleted = li.querySelector('.todo-complete');
 
         btnTodoCompleted.addEventListener('click', function(){
             item.completed = !item.completed;
             render();
-        })
+        });
+
+        const btnTodoRemove = li.querySelector('.todo-remove');
+
+        btnTodoRemove.addEventListener('click', function(){
+            li.remove();
+           
+        });
     
         });
 };
@@ -46,11 +53,14 @@ todoControl.addEventListener('submit', function(event){
         value: headerInput.value,
         completed: false
     };
-    // if(newTodo.value !== ''){
-    // todoData.push(newTodo);
-    // newTodo.value.textContent = '';
-    // };  
-    todoData.push(newTodo);  
+    if(newTodo.value !== ''){
+    todoData.push(newTodo);
+    
+    };  
+    headerInput.textContent = '';
+    console.log(newTodo.value);
+    headerInput.value = '';
+    // todoData.push(newTodo);  
     render();
 });
 
